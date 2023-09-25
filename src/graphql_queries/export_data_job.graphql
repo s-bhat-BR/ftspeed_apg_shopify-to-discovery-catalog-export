@@ -9,6 +9,15 @@ mutation ExportDataJob {
                             handle
                             totalInventory
                             status
+                            metafields {
+                                          edges {
+                                            node {
+                                              namespace
+                                              key
+                                              value
+                                            }
+                                          }
+                                        }
                         }
                     }
                 }
