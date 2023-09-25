@@ -11,42 +11,8 @@ mutation ExportDataJob {
                         node{
                             id
                             handle
-                            title
-                            createdAt
-                            descriptionHtml
                             totalInventory
-                            onlineStorePreviewUrl
-                            priceRangeV2{
-                                maxVariantPrice{
-                                    amount
-                                }
-                                minVariantPrice{
-                                    amount
-                                }
-                            }
-                            featuredImage{
-                                url
-                            }
-                            productType
-                            seo{
-                                description
-                                title
-                            }
                             status
-                            storefrontId
-                            tags
-                            vendor
-                            collections(query:\"published_status:published\"){
-                                edges{
-                                    cursor
-                                    node{
-                                        id
-                                        handle
-                                        title
-                                        productsCount
-                                    }
-                                }
-                            }
                             metafields{
                                 edges{
                                     cursor
@@ -64,33 +30,7 @@ mutation ExportDataJob {
                                 edges{
                                     cursor
                                     node{
-                                        id
-                                        title
-                                        sku
-                                        price
-                                        metafields{
-                                            edges{
-                                                node{
-                                                    id
-                                                    key
-                                                    value
-                                                    namespace
-                                                    type
-                                                    updatedAt
-                                                }
-                                            }
-                                        }
-                                        image{
-                                            url
-                                        }
-                                        selectedOptions {
-                                            name
-                                            value
-                                        }
-                                        compareAtPrice
-                                        weight
-                                        inventoryQuantity
-                                        availableForSale
+                                        quantityAvailable
                                     }
                                 }
                             }
