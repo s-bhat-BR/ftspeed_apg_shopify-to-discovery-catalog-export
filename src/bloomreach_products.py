@@ -37,17 +37,10 @@ def create_product(product, shopify_url):
   # these dictionaries will be merged into out_product at the end
   out_pa = out_product["attributes"]
 
-  out_pa["url"] = f"https://{shopify_url}/products/" + in_pa["sp.handle"]
-
   if in_pa["sp.status"] == "ACTIVE" and "sp.totalInventory" in in_pa and in_pa["sp.totalInventory"] > 0:
     out_pa["availability"] = True
   else:
     out_pa["availability"] = False
-
-  # set thumb_image from featured image (alternatively, this could be large_image)
-  # https://shopify.dev/api/admin-graphql/2023-01/objects/product#field-product-featuredimage
-  if "sp.featuredImage" in in_pa and in_pa["sp.featuredImage"] and "url" in in_pa["sp.featuredImage"]:
-      out_pa["thumb_image"] = in_pa["sp.featuredImage"]["url"]
 
   # process product level mappings
   for mapping in PRODUCT_MAPPINGS:
