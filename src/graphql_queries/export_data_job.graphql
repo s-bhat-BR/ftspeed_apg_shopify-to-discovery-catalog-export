@@ -13,27 +13,6 @@ mutation ExportDataJob {
                             handle
                             totalInventory
                             status
-                            metafields{
-                                edges{
-                                    cursor
-                                    node{
-                                        id
-                                        key
-                                        value
-                                        namespace
-                                        type
-                                        updatedAt
-                                    }
-                                }
-                            }
-                            variants{
-                                edges{
-                                    cursor
-                                    node{
-                                        quantityAvailable
-                                    }
-                                }
-                            }
                         }
                     }
                 }
