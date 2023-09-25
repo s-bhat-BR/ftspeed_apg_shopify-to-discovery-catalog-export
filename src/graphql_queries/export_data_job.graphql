@@ -3,21 +3,28 @@ mutation ExportDataJob {
         query: """
             {
                 products {
+                    pageInfo{
+                        hasNextPage
+                    }
                     edges{
                         node{
                             id
                             handle
                             totalInventory
                             status
-                            metafields {
-                                          edges {
-                                            node {
-                                              namespace
-                                              key
-                                              value
-                                            }
-                                          }
-                                        }
+                            metafields{
+                                edges{
+                                    cursor
+                                    node{
+                                        id
+                                        key
+                                        value
+                                        namespace
+                                        type
+                                        updatedAt
+                                    }
+                                }
+                            }
                         }
                     }
                 }
