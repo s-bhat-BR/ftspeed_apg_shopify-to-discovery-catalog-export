@@ -3,11 +3,7 @@ mutation ExportDataJob {
         query: """
             {
                 products {
-                    pageInfo{
-                        hasNextPage
-                    }
                     edges{
-                        cursor
                         node{
                             id
                             handle
