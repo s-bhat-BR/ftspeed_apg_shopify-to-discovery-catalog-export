@@ -16,12 +16,9 @@ mutation ExportDataJob {
                                 edges{
                                     cursor
                                     node{
-                                        brProductId: metafield(
-                                            namespace: "custom"
-                                            key: "br_product_id"
-                                            ) {
+                                        brProductId: metafield(namespace: "custom", key: "br_product_id") {
                                                 value
-                                            }
+                                        }
                                     }
                                 }
                             }
