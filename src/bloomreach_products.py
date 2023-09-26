@@ -24,17 +24,19 @@ def create_products(fp, shopify_url):
 
 def create_product(product, shopify_url):
 
-  out_product = {
-    try:
-      "id": product["attributes"]["spm.custom.br_product_id"]
-    except KeyError:
+  try:
+      br_product_id = product["attributes"]["spm.custom.br_product_id"]
+  except KeyError:
       return
 
-    try:
-      "attributes": product["attributes"]["sp.totalInventory"]
-    except KeyError:
+  try:
+      product_attributes = product["attributes"]["sp.totalInventory"]
+  except KeyError:
       raise RuntimeError("Error retrieving or no key present- sp.totalInventory")
-    
+      
+  out_product = {
+    "id": br_product_id, 
+    "attributes": product_attributes,
     "variants": {}    
   }
 
