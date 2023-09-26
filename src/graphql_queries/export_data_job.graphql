@@ -19,9 +19,6 @@ mutation ExportDataJob {
                                         id
                                         key
                                         value
-                                        br_product_id: metafield(namespace: 'custom', key: 'br_product_id') {
-                                                value
-                                        }
                                     }
                                 }
                             }
