@@ -25,8 +25,8 @@ def create_products(fp, shopify_url):
 def create_product(product, shopify_url):
 
   out_product = {
-    "id": product["id"],
-    "attributes": product["attributes"].copy(),
+    "id": product["spm.custom.br_product_id"],
+    "attributes": product["attributes"]["sp.totalInventory"],
     "variants": {}
   }
 
