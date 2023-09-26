@@ -19,7 +19,7 @@ mutation ExportDataJob {
                                         id
                                         key
                                         value
-                                        brProductId: metafield(namespace: "custom", key: "br_product_id") {
+                                        br_product_id: metafield(namespace: "custom", key: "br_product_id") {
                                                 value
                                         }
                                     }
