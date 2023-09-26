@@ -47,10 +47,14 @@ def create_product(product, shopify_url):
   # these dictionaries will be merged into out_product at the end
   out_pa = out_product["attributes"]
 
-  if in_pa["sp.status"] == "ACTIVE" and "sp.totalInventory" in in_pa and in_pa["sp.totalInventory"] > 0:
-    out_pa["availability"] = True
-  else:
-    out_pa["availability"] = False
+  try:
+    if in_pa["sp.status"] == "ACTIVE" and "sp.totalInventory" in in_pa and in_pa["sp.totalInventory"] > 0:
+      out_pa["availability"] = True
+    else:
+      out_pa["availability"] = False
+  except TypeError:
+    print("TypeError in availability" + out_pa["availability"] + "False")
+    return
 
   # process product level mappings
   for mapping in PRODUCT_MAPPINGS:
