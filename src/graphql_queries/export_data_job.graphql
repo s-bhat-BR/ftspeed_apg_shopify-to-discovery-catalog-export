@@ -17,6 +17,8 @@ mutation ExportDataJob {
                                     cursor
                                     node{
                                         brProductId: metafield(namespace: "custom", key: "br_product_id") {
+                                                id
+                                                key
                                                 value
                                         }
                                     }
