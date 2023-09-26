@@ -53,7 +53,7 @@ def create_product(product, shopify_url):
     else:
       out_pa["availability"] = False
   except TypeError:
-    print("TypeError in availability" + str(out_pa["availability"]) + "False")
+    print("TypeError in availability")
     return
 
   # process product level mappings
