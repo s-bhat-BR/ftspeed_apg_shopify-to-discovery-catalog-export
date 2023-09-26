@@ -19,6 +19,7 @@ mutation ExportDataJob {
                                         id
                                         key
                                         value
+                                        namespace
                                     }
                                 }
                             }
