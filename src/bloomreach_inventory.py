@@ -25,7 +25,7 @@ def create_add_product_op(input_data):
       "path": f"/products/br_product_id/attributes/totalInventory",
       "value": input_data['value']['attributes']['sp.totalInventory']
     }
-  else
+  else:
     return
 
 def main(fp_in, fp_out):
