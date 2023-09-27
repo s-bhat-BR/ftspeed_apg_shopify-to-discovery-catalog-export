@@ -48,7 +48,8 @@ def main(fp_in, fp_out):
   with gzip.open(fp_out, "wb") as file:
     writer = jsonlines.Writer(file)
     for object in patch:
-      writer.write(object)
+      if object.strip():
+        writer.write(object)
     writer.close()
 
 if __name__ == '__main__':
