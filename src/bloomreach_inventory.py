@@ -17,7 +17,7 @@ def create_patch_from_products_fp(fp_in):
 # construct an add product operation from Bloomreach Discovery product
 def create_add_product_op(input_data):
   
-  return = {
+  return {
     "op": "add",
     "path": f"/products/{input_data['value']['attributes']['spm.custom.br_product_id']}/attributes/totalInventory",
     "value": input_data['value']['attributes']['sp.totalInventory']
