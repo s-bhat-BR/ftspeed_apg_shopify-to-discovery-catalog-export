@@ -19,7 +19,30 @@ mutation ExportDataJob {
                                         id
                                         title
                                         sku
+                                        price
+                                        metafields{
+                                            edges{
+                                                node{
+                                                    id
+                                                    key
+                                                    value
+                                                    namespace
+                                                    type
+                                                    updatedAt
+                                                }
+                                            }
+                                        }
+                                        image{
+                                            url
+                                        }
+                                        selectedOptions {
+                                            name
+                                            value
+                                        }
+                                        compareAtPrice
+                                        weight
                                         inventoryQuantity
+                                        availableForSale
                                     }
                                 }
                             }
