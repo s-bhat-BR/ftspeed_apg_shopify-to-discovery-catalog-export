@@ -18,7 +18,7 @@ def create_patch_from_products_fp(fp_in):
 def create_add_product_op(input_data):
 
   try:
-    sku = input_data['value']['variants']['sku']
+    sku = input_data['value']['variants'][0]['sv.sku']
   except:
     return
 
