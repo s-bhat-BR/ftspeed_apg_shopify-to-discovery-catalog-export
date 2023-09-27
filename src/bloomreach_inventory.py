@@ -25,7 +25,7 @@ def create_add_product_op(input_data):
   if br_product_id is not None:
     return {
       "op": "add",
-      "path": f"/products/br_product_id/attributes/totalInventory",
+      "path": f"/products/{br_product_id}/attributes/totalInventory",
       "value": input_data['value']['attributes']['sp.totalInventory']
     }
   else:
