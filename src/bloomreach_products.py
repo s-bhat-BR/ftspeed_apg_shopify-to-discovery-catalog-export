@@ -24,20 +24,10 @@ def create_products(fp, shopify_url):
 
 def create_product(product, shopify_url):
 
-  try:
-      br_product_id = product["attributes"]["spm.custom.br_product_id"]
-  except KeyError:
-      return
-
-  try:
-      product_attributes = product["attributes"]["sp.totalInventory"]
-  except KeyError:
-      raise RuntimeError("Error retrieving or no key present- sp.totalInventory")
-      
   out_product = {
-    "id": br_product_id, 
-    "attributes": product_attributes,
-    "variants": {}    
+    "id": product["id"],
+    "attributes": product["attributes"].copy(),
+    "variants": {}
   }
 
   # container for input product attributes
@@ -47,14 +37,10 @@ def create_product(product, shopify_url):
   # these dictionaries will be merged into out_product at the end
   out_pa = out_product["attributes"]
 
-  try:
-    if in_pa["sp.status"] == "ACTIVE" and "sp.totalInventory" in in_pa and in_pa["sp.totalInventory"] > 0:
-      out_pa["availability"] = True
-    else:
-      out_pa["availability"] = False
-  except TypeError:
-    print("TypeError in availability")
-    return
+  if in_pa["sp.status"] == "ACTIVE" and "sp.totalInventory" in in_pa and in_pa["sp.totalInventory"] > 0:
+    out_pa["availability"] = True
+  else:
+    out_pa["availability"] = False
 
   # process product level mappings
   for mapping in PRODUCT_MAPPINGS:
