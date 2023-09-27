@@ -18,14 +18,14 @@ def create_patch_from_products_fp(fp_in):
 def create_add_product_op(input_data):
 
   try:
-    br_product_id = input_data['value']['attributes']['spm.custom.br_product_id']
+    sku = input_data['value']['variants']['sku']
   except:
     return
 
-  if br_product_id is not None:
+  if sku is not None:
     return {
       "op": "add",
-      "path": f"/products/{br_product_id}/attributes/totalInventory",
+      "path": f"/products/{sku}/attributes/totalInventory",
       "value": str(input_data['value']['attributes']['sp.totalInventory'])
     }
   else:
