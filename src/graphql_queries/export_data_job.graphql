@@ -12,15 +12,14 @@ mutation ExportDataJob {
                             handle
                             totalInventory
                             status
-                            metafields{
+                            variants{
                                 edges{
                                     cursor
                                     node{
                                         id
-                                        key
-                                        value
-                                        namespace
-                                        type
+                                        title
+                                        sku
+                                        inventoryQuantity
                                     }
                                 }
                             }
