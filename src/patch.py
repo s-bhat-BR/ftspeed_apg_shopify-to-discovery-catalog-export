@@ -18,11 +18,8 @@ def create_patch_from_products_fp(fp_in):
 
 # construct an add product operation from shopify product
 def create_add_product_op(product):
-  try:
-    path = "/products/" + product["id"].replace("/", "~1") # JSONPointer compliant replacement
-  except:
-    return
-  
+  path = "/products/" + product["id"].replace("/", "~1") # JSONPointer compliant replacement
+ 
   return {
     "op": "add", 
     "path": path, 
