@@ -17,7 +17,10 @@ def create_patch_from_products_fp(fp_in):
 # construct an add product operation from Bloomreach Discovery product
 def create_add_product_op(input_data):
 
-  br_product_id = input_data['value']['attributes']['spm.custom.br_product_id']
+  try:
+    br_product_id = input_data['value']['attributes']['spm.custom.br_product_id']
+  except:
+    return
 
   if br_product_id is not None:
     return {
