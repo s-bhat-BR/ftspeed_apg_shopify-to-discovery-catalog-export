@@ -43,7 +43,7 @@ def patch_catalog(
     response = requests.patch(url, data=payload, headers=headers)
     response.raise_for_status()
 
-    logger.info("Feed API: HTTP PUT: %s", response.url)
+    logger.info("Feed API: HTTP PATCH: %s", response.url)
     logger.info("Feed Job response: %s", response.json())
     job_id = response.json()["jobId"]
 
