@@ -123,13 +123,12 @@ if __name__ == '__main__':
   )
 
   args = parser.parse_args()
-  fp_in = args.input_file
   environment_name = args.br_environment
   account_id = args.br_account_id
   catalog_name = args.br_catalog_name
   api_token = args.br_api_token
 
-  index_catalog(fp_in, 
+  index_catalog( 
        environment_name=environment_name,
        account_id=account_id,
        catalog_name=catalog_name,
