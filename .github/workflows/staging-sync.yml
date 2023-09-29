@@ -54,6 +54,22 @@ jobs:
           python src/bloomreach_inventory.py --input-file=./${{ env.RUNNUM }}/4_bloomreach_patch.jsonl.gz --output-file=./${{ env.RUNNUM }}/5_bloomreach_inventory.jsonl.gz
         env:
           BR_SHOPIFY_URL: ${{ vars.BR_SHOPIFY_URL }}
+      - name: Update all records
+        run: |
+          python src/feed.py --input-file=./${{ env.RUNNUM }}/5_bloomreach_inventory.jsonl.gz
+        env:
+          BR_ENVIRONMENT_NAME: ${{ vars.BR_ENVIRONMENT_NAME }}
+          BR_ACCOUNT_ID: ${{ vars.BR_ACCOUNT_ID }}
+          BR_CATALOG_NAME: ${{ vars.BR_CATALOG_NAME }}
+          BR_API_TOKEN: ${{ secrets.BR_API_TOKEN }}
+      - name: Index/POST
+        run: |
+          python src/post.py 
+        env:
+          BR_ENVIRONMENT_NAME: ${{ vars.BR_ENVIRONMENT_NAME }}
+          BR_ACCOUNT_ID: ${{ vars.BR_ACCOUNT_ID }}
+          BR_CATALOG_NAME: ${{ vars.BR_CATALOG_NAME }}
+          BR_API_TOKEN: ${{ secrets.BR_API_TOKEN }}
       - name: Archive data files
         uses: actions/upload-artifact@v3
         with:
