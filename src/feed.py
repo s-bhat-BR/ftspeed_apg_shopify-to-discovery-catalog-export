@@ -40,10 +40,10 @@ def patch_catalog(
 
   feed_job_id = ""
   with open(patch_fp, 'rb') as payload:
-    response = requests.put(url, data=payload, headers=headers)
+    response = requests.patch(url, data=payload, headers=headers)
     response.raise_for_status()
 
-    logger.info("Feed API: HTTP PUT: %s", response.url)
+    logger.info("Feed API: HTTP PATCH: %s", response.url)
     logger.info("Feed Job response: %s", response.json())
     job_id = response.json()["jobId"]
 
@@ -68,7 +68,7 @@ def br_check_status(job_id="", environment_name="", token=""):
 
   if state in ["failed", "killed"]:
     logger.error("Job did not complete successfully: %s, %s", job_id, state)
-    raise ValueError("Full feed job did not complete successfully")
+    raise ValueError("Delta feed job did not complete successfully")
   
   # TODO: check for the pending and queued states and return false on those
   return False
@@ -88,7 +88,7 @@ if __name__ == '__main__':
   )
   
   parser = argparse.ArgumentParser(
-    description="Makes a full feed API call using the patch jsonl as a request body using gzip compression."
+    description="Makes a delta feed API call using the patch jsonl as a request body using gzip compression."
   )
 
   parser.add_argument(
