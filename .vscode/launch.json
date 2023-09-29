@@ -5,20 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "justMyCode": true
-        },
-        {
             "name": "Python: Bloomreach Products",
             "type": "python",
             "request": "launch",
             "program": "src/bloomreach_products.py",
             "console": "integratedTerminal",
-            "args": ["--input-file", "data/20230830_181453_3452125708561_2_generic_products.jsonl", "--output-file", "data/test/2_generic_products.jsonl", "--shopify-url", "example.com"],
+            "args": ["--input-file", "test/2_bloomreach_base.jsonl.gz", "--output-file", "test/2_generic_products.jsonl", "--shopify-url", "ft-speed-dev.myshopify.com"],
             "justMyCode": true
         }
     ]
