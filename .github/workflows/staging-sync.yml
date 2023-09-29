@@ -49,6 +49,11 @@ jobs:
           python src/patch.py --input-file=./${{ env.RUNNUM }}/3_bloomreach_products.jsonl.gz --output-file=./${{ env.RUNNUM }}/4_bloomreach_patch.jsonl.gz
         env:
           BR_SHOPIFY_URL: ${{ vars.BR_SHOPIFY_URL }}
+      - name: Extract inventory from discovery patch
+        run: |
+          python src/bloomreach_inventory.py --input-file=./${{ env.RUNNUM }}/4_bloomreach_patch.jsonl.gz --output-file=./${{ env.RUNNUM }}/5_bloomreach_inventory.jsonl.gz
+        env:
+          BR_SHOPIFY_URL: ${{ vars.BR_SHOPIFY_URL }}
       - name: Archive data files
         uses: actions/upload-artifact@v3
         with:
