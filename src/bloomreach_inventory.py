@@ -18,15 +18,15 @@ def create_patch_from_products_fp(fp_in):
 def create_add_product_op(input_data):
 
   try:
-    sku = input_data['value']['variants'][0]['sv.sku']
+    totalInventory = input_data['value']['attributes']['sp.totalInventory']
   except:
     return
 
-  if sku is not None:
+  if totalInventory is not None:
     return {
       "op": "add",
-      "path": f"/products/{sku}/attributes/totalInventory",
-      "value": str(input_data['value']['attributes']['sp.totalInventory'])
+      "path": f"{input_data['path']}/attributes/totalInventory",
+      "value": str(totalInventory)
     }
   else:
     return
@@ -57,7 +57,7 @@ if __name__ == '__main__':
   from os import getenv
   
   parser = argparse.ArgumentParser(
-    description="Extracts totalInventory from Bloomreach Discovery catalog file. This patch can be used as a Full or Delta feed data source either directly in API request or SFTP."
+    description="Extracts totalInventory from Bloomreach Discovery catalog file. This patch can only be used as a Delta feed data source either directly in API request or SFTP."
   )
   
   parser.add_argument(
